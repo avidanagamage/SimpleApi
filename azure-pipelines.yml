@@ -39,14 +39,25 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+# - task: DotNetCoreCLI@2
+#   displayName: 'dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+#   inputs:
+#     command: 'publish'
+#     publishWebProjects: false
+#     projects: 'src/simpleAPI/simpleAPI.csproj'
+#     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+#     zipAfterPublish: true
+
+# Publish projects to specified folder.
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+  displayName: 'dotnet publish'
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'src/simpleAPI/simpleAPI.csproj'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    projects: '**/*.csproj'
+    arguments: '-o $(Build.ArtifactStagingDirectory)/Output'
     zipAfterPublish: true
+    modifyOutputPath: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
