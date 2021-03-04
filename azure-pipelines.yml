@@ -25,7 +25,7 @@ steps:
   inputs:
     command: test
     projects: '**/*Test/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    configuration: '$(buildConfiguration)'
 
 - task: VSBuild@1
   inputs:
