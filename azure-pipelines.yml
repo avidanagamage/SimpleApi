@@ -47,7 +47,6 @@ steps:
     projects: 'src/simpleAPI/simpleAPI.csproj'
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/Output'
     zipAfterPublish: true
-    modifyOutputPath: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
