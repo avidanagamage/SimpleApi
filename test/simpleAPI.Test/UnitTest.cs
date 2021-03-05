@@ -20,7 +20,7 @@ namespace simpleAPI.Test
         public void GetValues()
         {
             var returnValue = valueController.Get();
-            Assert.Equal(new string[] { "value 1", "value 2" }, returnValue.Value);
+            Assert.Equal(new string[] { "val 1", "val 2" }, returnValue.Value);
         }
     }
 }
