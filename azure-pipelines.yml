@@ -40,14 +40,13 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+  displayName: 'dotnet publish'
   inputs:
     command: 'publish'
     publishWebProjects: false
     projects: 'src/simpleAPI/simpleAPI.csproj'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
-    modifyOutputPath: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts' 
