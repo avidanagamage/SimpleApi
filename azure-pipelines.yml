@@ -54,7 +54,7 @@ steps:
     command: publish
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
-    zipAfterPublish: True
+    # zipAfterPublish: True
 
 # - task: PublishBuildArtifacts@1
 #   displayName: 'publish artifacts' 
@@ -63,4 +63,4 @@ steps:
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
-    condition: succeededOrFailed()
+  condition: succeededOrFailed()
