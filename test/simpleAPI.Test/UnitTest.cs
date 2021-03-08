@@ -13,14 +13,14 @@ namespace simpleAPI.Test
         public void GetRequestWeather()
         {
             var returnValue = weatherController.Get();
-            Assert.Equal(new string[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"}, returnValue);
+            Assert.Equal(new string[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" }, returnValue);
         }
 
         [Fact]
         public void GetValues()
         {
             var returnValue = valueController.Get();
-            Assert.Equal(new string[] { "value 1", "value 2" }, returnValue.Value);
+            Assert.Equal(new string[] { "val 1", "val 2" }, returnValue.Value);
         }
     }
 }

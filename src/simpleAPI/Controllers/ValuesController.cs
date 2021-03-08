@@ -10,7 +10,7 @@ namespace simpleAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value 1", "value 2" };
+            return new string[] { "val 1", "val 2" };
         }
 
         [HttpGet("Get/{id}")]
