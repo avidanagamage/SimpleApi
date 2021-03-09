@@ -34,3 +34,9 @@ steps:
     command: test
     projects: '**/*Test/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.Repository.LocalPath)/Deployment'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)/Deployment'
