@@ -16,6 +16,12 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.Repository.LocalPath)/Deployment'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)/Deployment'
+
 - task: DotNetCoreCLI@2
   displayName: Publish
   inputs:
@@ -34,9 +40,3 @@ steps:
     command: test
     projects: '**/*Test/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(Build.Repository.LocalPath)/Deployment'
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)/Deployment'
