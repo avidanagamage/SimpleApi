@@ -15,15 +15,36 @@ namespace simpleAPI.Controllers
         };
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<WeatherForecast> Get()
         {
-            return Summaries;
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            });
         }
 
         [HttpGet("Get/{id}")]
         public ActionResult<string> Get(int id)
         {
             return $" Selected weather is {Summaries[id]}";
+        }
+
+        public class WeatherForecast
+        {
+            public string DateFormatted { get; set; }
+            public int TemperatureC { get; set; }
+            public string Summary { get; set; }
+
+            public int TemperatureF
+            {
+                get
+                {
+                    return 32 + (int)(TemperatureC / 0.5556);
+                }
+            }
         }
 
     }
